@@ -14,6 +14,10 @@ public class Etudiant {
 	private String nom;
 	private String prenom;
 
+	public Etudiant() {
+
+	}
+
 	public Long getNumeroEtudiant() {
 		return numeroEtudiant;
 	}

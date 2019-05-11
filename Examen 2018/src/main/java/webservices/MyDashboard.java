@@ -16,7 +16,11 @@ public class MyDashboard {
 	@WebMethod
 	@WebResult(name = "etudiantsInscrits")
 	public List<Etudiant> afficherEtudiantsInscrits() {
-		return new ArrayList<>();
+		Etudiant et = new Etudiant();
+		et.setNom("Yassine");
+		List<Etudiant> listeEtudiants = new ArrayList<>();
+		listeEtudiants.add(et);
+		return listeEtudiants;
 	}
 
 	@WebMethod
