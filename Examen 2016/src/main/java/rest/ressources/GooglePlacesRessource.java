@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -20,7 +21,7 @@ public class GooglePlacesRessource {
 	private static List<Place> places = new ArrayList<Place>();
 
 	public Boolean checkKey(String key) {
-		return key.equals("	");
+		return key.equals("CnRsAAAA98C4wD");
 	}
 
 	public static List<Place> getPlaces() {
@@ -66,10 +67,12 @@ public class GooglePlacesRessource {
 		}
 	}
 
+	@DELETE
+	@Produces(value = MediaType.TEXT_PLAIN)
 	public Response deletePlace(@QueryParam(value = "key") String key, @QueryParam(value = "lat") float lat,
 			@QueryParam(value = "lon") float lon) {
 		if (checkKey(key)) {
-			return Response.status(Status.FOUND).entity(places.get(0)).build();
+			return Response.status(Status.FOUND).entity("true").header("Content-type", "text/plain").build();
 		} else {
 			return Response.status(Status.NOT_ACCEPTABLE).entity("Not Acceptable").build();
 		}
